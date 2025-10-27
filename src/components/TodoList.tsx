@@ -1,9 +1,10 @@
 import Todo from "./Todo";
 import { useAppSelector } from "../app/hooks";
 import type { TODO_TYPE } from "../app/types";
+import { selectVisibleTodosItems } from "../slices/todosSlice";
 
 const TodoList: React.FC = () => {
-  const todos = useAppSelector((state) => state.Todos);
+  const todos = useAppSelector(selectVisibleTodosItems);
   return (
     <ul>
       {todos.map((todo: TODO_TYPE) => {

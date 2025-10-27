@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../app/hooks";
 import type { TODO_TYPE } from "../app/types";
-import { todoRemoved, todoUpdated } from "../features/todos/todosSlice";
+import { todoRemoved, todoUpdated } from "../slices/todosSlice";
 
 type PROP_TYPE = {
   todo: TODO_TYPE;
@@ -8,7 +8,6 @@ type PROP_TYPE = {
 
 const Todo = ({ todo }: PROP_TYPE) => {
   const dispatch = useAppDispatch();
-  console.log({ todo });
   return (
     <>
       <input

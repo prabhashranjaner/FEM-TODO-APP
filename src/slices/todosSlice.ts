@@ -3,8 +3,8 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { TODO_TYPE } from "../../app/types";
-import type { RootStateType } from "../../app/store";
+import type { TODO_TYPE } from "../app/types";
+import type { RootStateType } from "../app/store";
 
 const todos: TODO_TYPE[] = [
   {
@@ -35,47 +35,72 @@ const todos: TODO_TYPE[] = [
 ];
 const todosSlice = createSlice({
   name: "todos",
-  initialState: todos,
+  initialState: {
+    items: todos,
+    filter: "all",
+  },
   reducers: {
     todoAdded(state, action: PayloadAction<TODO_TYPE>) {
-      state.push(action.payload);
+      state.items.push(action.payload);
     },
 
     todoUpdated(state, action: PayloadAction<TODO_TYPE>) {
       const { id, title, completed } = action.payload;
-      const existingTodo = state.find((todo) => todo.id === id);
+      const existingTodo = state.items.find((todo) => todo.id === id);
       if (existingTodo) {
         existingTodo.title = title;
         existingTodo.completed = completed;
       }
     },
 
+    filterUpdated(
+      state,
+      action: PayloadAction<"active" | "completed" | "all">,
+    ) {
+      state.filter = action.payload;
+    },
+
     todoRemoved(state, action: PayloadAction<string>) {
-      const index = state.findIndex((todo) => todo.id === action.payload);
+      const index = state.items.findIndex((todo) => todo.id === action.payload);
       if (index !== -1) {
-        state.splice(index, 1);
+        state.items.splice(index, 1);
       }
     },
 
     todoCompletedRemoved(state) {
-      const newState = state.filter((todo) => !todo.completed);
-      state.length = 0;
-      state.push(...newState);
+      state.items = state.items.filter((todo) => !todo.completed);
     },
   },
 });
 
 // ! Exporting Selectors
 // Basic selector to get the list of tasks
-export const selectTodosList = (state: RootStateType) => state.Todos;
+export const selectTodosItems = (state: RootStateType) => state.Todos.items;
+export const selectFilter = (state: RootStateType) => state.Todos.filter;
 
 // Memoized selector to count incompleted tasks
 export const selectInCompletedTodosCount = createSelector(
-  [selectTodosList],
+  [selectTodosItems],
   (todos) => todos.filter((todo) => !todo.completed).length,
+);
+
+export const selectVisibleTodosItems = createSelector(
+  [selectTodosItems, selectFilter],
+  (todosItems, filter) => {
+    if (filter === "active") {
+      return todosItems.filter((todosItem) => !todosItem.completed);
+    } else if (filter === "completed") {
+      return todosItems.filter((todosItem) => todosItem.completed);
+    } else return todosItems;
+  },
 );
 
 export default todosSlice.reducer;
 
-export const { todoAdded, todoRemoved, todoUpdated, todoCompletedRemoved } =
-  todosSlice.actions;
+export const {
+  todoAdded,
+  todoRemoved,
+  todoUpdated,
+  todoCompletedRemoved,
+  filterUpdated,
+} = todosSlice.actions;

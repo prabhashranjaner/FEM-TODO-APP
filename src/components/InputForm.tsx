@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import type { TODO_TYPE } from "../app/types";
 import { useAppDispatch } from "../app/hooks";
-import { todoAdded } from "../features/todos/todosSlice";
+import { todoAdded } from "../slices/todosSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
 const InputForm = () => {
