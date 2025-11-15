@@ -5,7 +5,7 @@ const Filter = () => {
   const filter = useAppSelector((state) => state.Todos.filter);
   const disptach = useAppDispatch();
   return (
-    <div className="flex grow items-center justify-center gap-4 align-middle text-sm lg:text-lg">
+    <div className="lg:text-md flex grow items-center justify-center gap-4 align-middle text-sm">
       <span
         className={
           filter === "all"

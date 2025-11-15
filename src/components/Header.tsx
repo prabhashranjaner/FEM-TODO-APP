@@ -5,7 +5,7 @@ import { toggleTheme } from "../slices/themeSlice";
 const Header = () => {
   const dispatch = useAppDispatch();
   const isDark = useAppSelector((state) => state.Theme.isDark);
-  const imgSrc = isDark ? "../images/icon-sun.svg" : "../images/icon-moon.svg";
+  const imgSrc = isDark ? "/images/icon-sun.svg" : "/images/icon-moon.svg";
 
   useEffect(() => {
     if (isDark) {

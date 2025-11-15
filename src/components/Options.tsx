@@ -10,7 +10,7 @@ const Options = () => {
 
   const disptach = useAppDispatch();
   return (
-    <div className="flex items-center justify-between p-4 text-sm md:text-base lg:text-lg dark:text-gray-600">
+    <div className="lg:text-md flex items-center justify-between p-4 text-sm md:text-base dark:text-gray-600">
       <p>
         <span>{completedTask}</span> Items left
       </p>

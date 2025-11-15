@@ -34,7 +34,7 @@ const Todo = ({ todo }: PROP_TYPE) => {
         </span>
       </label>
       <p
-        className={`grow text-sm lg:text-lg dark:text-purple-300 ${todo.completed ? "line-through" : ""}`}
+        className={`lg:text-md grow text-sm dark:text-purple-300 ${todo.completed ? "line-through" : ""}`}
       >
         {todo.title}
       </p>
