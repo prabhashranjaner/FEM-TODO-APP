@@ -33,6 +33,7 @@ const todos: TODO_TYPE[] = [
     completed: true,
   },
 ];
+
 const todosSlice = createSlice({
   name: "todos",
   initialState: {

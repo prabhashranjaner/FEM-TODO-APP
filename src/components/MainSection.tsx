@@ -3,7 +3,7 @@ import TodoList from "./TodoList";
 
 const MainSection = () => {
   return (
-    <section className="bg-gray-50 dark:bg-navy-900">
+    <section className="dark:bg-navy-900 rounded-md bg-gray-50 shadow-lg">
       <TodoList />
       <Options />
     </section>

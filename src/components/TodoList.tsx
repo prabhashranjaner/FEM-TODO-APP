@@ -11,7 +11,7 @@ const TodoList: React.FC = () => {
         return (
           <li
             key={todo.id}
-            className="flex items-center px-4 py-2 justify-between gap-2 border-b-2 border-gray-300"
+            className="flex items-center justify-between gap-2 border-b border-purple-100 py-3 hover:cursor-pointer lg:px-3 lg:py-4 dark:border-purple-700"
           >
             <Todo todo={todo} />
           </li>

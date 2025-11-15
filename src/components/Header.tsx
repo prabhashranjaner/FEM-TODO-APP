@@ -13,11 +13,12 @@ const Header = () => {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    localStorage.setItem("todo-theme", String(isDark));
   }, [isDark]);
 
   return (
-    <header className="mb-3 flex justify-between items-center ">
-      <h2 className="text-3xl tracking-[.5em] text-gray-50 text-left font-bold">
+    <header className="flex items-center justify-between">
+      <h2 className="text-left text-xl font-bold tracking-[.5em] text-gray-50 lg:text-4xl">
         TODO
       </h2>
       <img

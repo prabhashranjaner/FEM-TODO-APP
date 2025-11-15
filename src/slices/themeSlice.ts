@@ -8,7 +8,7 @@ const themeSlice = createSlice({
   reducers: {
     toggleTheme(state) {
       state.isDark = !state.isDark;
-      localStorage.setItem("todo-theme", String(state.isDark));
+      // localStorage.setItem("todo-theme", String(state.isDark));
     },
   },
 });

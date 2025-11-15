@@ -25,3 +25,8 @@
 
   --font-primary: "Josefin Sans", sans-serif;
 }
+
+.background {
+  background-size: 100% auto;
+  background-position: top center;
+}
